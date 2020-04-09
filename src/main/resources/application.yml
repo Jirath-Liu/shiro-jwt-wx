@@ -1,0 +1,35 @@
+server:
+  servlet:
+    context-path: /
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8
+    username: localhost
+    password: root
+  redis:
+    host: localhost
+    password: jirath
+    timeout: 60
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
+mybatis:
+  type-aliases-package: com.hhcat.hhcat.pojo,com.hhcat.hhcat.query
+  mapper-locations: classpath:mybatis-mapping/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+jwt:
+  secret: VGiXGUJDQl0OjjKmvTH3ycbkyVSg5Sb3RyPy40DpN98aDGX3
+
+app:
+  id: testId
+  secret: test
