@@ -1,6 +1,7 @@
 package com.jirath.shirojwt.conf.shiro;
 
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Locale;
 
 /**
  * <h1>BasicHttpAuthenticationFilter</h1>
@@ -26,11 +28,18 @@ import javax.servlet.http.HttpServletResponse;
 public class JwtShiroFilter extends BasicHttpAuthenticationFilter {
     /**
      * 判断用户是否想要进行 需要验证的操作
-     * 检测header里面是否包含Authorization字段即可
+     * 检测header里面是否包含token字段即可\
+     * 调用情况请查看BasicHttpAuthenticationFilter源码
      */
     @Override
-    protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
-        return !StringUtils.isEmpty(getAuthzHeader(request));
+    protected String getAuthzHeader(ServletRequest request) {
+        HttpServletRequest httpRequest = WebUtils.toHttp(request);
+        return httpRequest.getHeader("token");
+    }
+
+    @Override
+    protected boolean isLoginAttempt(String authzHeader) {
+        return authzHeader != null;
     }
 
     /**
