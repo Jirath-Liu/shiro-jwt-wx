@@ -6,7 +6,7 @@ package com.jirath.shirojwt.conf.exceptionconfig.exception;
  * @description:
  */
 
-public class WxApiException extends RuntimeException {
+public class WxApiException extends Exception {
     public WxApiException(){super();}
     public WxApiException(String message) {
         super(message);

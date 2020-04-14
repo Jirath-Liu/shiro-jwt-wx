@@ -1,5 +1,7 @@
 package com.jirath.shirojwt.service;
 
+import com.jirath.shirojwt.conf.exceptionconfig.exception.WxApiException;
+
 /**
  * @author Jirath
  * @date 2020/4/9
@@ -12,5 +14,5 @@ public interface LoginService {
      * @param code
      * @return
      */
-    String login(String code) ;
+    String login(String code) throws WxApiException;
 }

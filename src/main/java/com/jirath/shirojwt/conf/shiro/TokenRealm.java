@@ -2,6 +2,7 @@ package com.jirath.shirojwt.conf.shiro;
 
 import com.jirath.shirojwt.conf.exceptionconfig.exception.TokenException;
 import com.jirath.shirojwt.conf.jwt.JwtUtil;
+import lombok.SneakyThrows;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -41,6 +42,7 @@ public class TokenRealm extends AuthorizingRealm {
      * @return
      * @throws AuthenticationException token异常，可以细化设置
      */
+    @SneakyThrows
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) {
         String submittedToken=authenticationToken.getCredentials().toString();

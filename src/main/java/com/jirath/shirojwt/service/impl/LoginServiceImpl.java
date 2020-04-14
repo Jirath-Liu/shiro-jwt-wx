@@ -44,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
      * @return
      */
     @Override
-    public String login(String code) {
+    public String login(String code) throws WxApiException {
         String resultJson = analysisInfo(code);
         WxLoginResponseVo wxResponse = JSONObject.toJavaObject(JSONObject.parseObject(resultJson), WxLoginResponseVo.class);
         if (!wxResponse.getErrcode().equals("0")) {

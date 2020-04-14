@@ -5,7 +5,7 @@ package com.jirath.shirojwt.conf.exceptionconfig.exception;
  * @date 2020/4/9
  * @description:
  */
-public class TokenException extends RuntimeException {
+public class TokenException extends Exception {
     public TokenException(){super();}
     public TokenException(String message) {
         super(message);
