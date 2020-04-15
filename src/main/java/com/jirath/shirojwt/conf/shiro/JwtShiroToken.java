@@ -8,7 +8,6 @@ import org.apache.shiro.authc.AuthenticationToken;
  * @date 2020/4/9
  * @description: 一个用于Shiro使用的Authentication，因为使用JWT需要有自己的身份信息，所以使用针对Token定制的信息
  */
-@Data
 public class JwtShiroToken implements AuthenticationToken {
     /**
      * 封装，防止误操作
@@ -34,5 +33,13 @@ public class JwtShiroToken implements AuthenticationToken {
     @Override
     public Object getCredentials() {
         return token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

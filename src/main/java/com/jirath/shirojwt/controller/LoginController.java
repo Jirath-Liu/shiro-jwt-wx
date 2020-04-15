@@ -1,5 +1,6 @@
 package com.jirath.shirojwt.controller;
 
+import com.jirath.shirojwt.conf.exceptionconfig.exception.WxApiException;
 import com.jirath.shirojwt.service.LoginService;
 import com.jirath.shirojwt.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/wx/user/sign_in")
-    public ResultVo login(@NotNull String code){
+    public ResultVo login(@NotNull String code) throws WxApiException {
         return ResultVo.builder()
                 .code(200)
                 .data(loginService.login(code))
